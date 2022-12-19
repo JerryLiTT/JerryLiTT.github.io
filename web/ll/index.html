@@ -1,27 +1,59 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-  <title data-react-helmet="true">HTTP 404 - SegmentFault</title>
-  <meta charset="utf-8">
-  <meta http-equiv="refresh" content="20;url='https://github.com/cloudResource/error-page'">
-  <link rel="stylesheet" href="./main.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>🐉的传人</title>
 </head>
-
 <body>
-  <div id="root">
-    <div class="box-404-wrap">
-      <div class="box">
-        <div class="d-flex flex-column align-items-center">
-          <div class="text-wrap">
-            <h1 data-t="404" class="h1">404</h1>
-          </div>
-          <div class="text-center mt-2">页面不存在或者您没有权限访问。</div>
-          <div class="mt-4"><a href="https://github.com/cloudResource/error-page" role="button" tabindex="0" class="btn btn-primary">回首页</a></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</body>
+    <section class="showcase">
+        <header>
+            <div class="logo">
+                <img src="assets/logo.png" />
+                
+            </div>
+            <div class="toggle"></div>
+        </header>
 
+        <video src="assets/boxing.mp4" muted loop autoplay></video>
+
+        <div class="overlay"></div>
+
+        <div class="text">
+            <h2>巴黎又一城</h2>
+            <h3>您贴心的马匹选购管家（误</h3>
+            
+            <p>马，一种神奇的，可以站着睡觉的动物，等待您的探索</p>
+            <a href="https:\\jerrylitt.github.io/web/ll/index1.html">由此进入</a>
+        </div>
+
+        <ul class="social">
+            <li><a href="https:\\jerrylitt.github.io/web/ll/index1.html"><img src="assets/qq.png" alt=""></a></li>
+            <li><a href="https:\\jerrylitt.github.io/web/ll/index1.html"><img src="assets/weixin.png" alt=""></a></li>
+            <li><a href="https:\\jerrylitt.github.io/web/ll/index1.html"><img src="assets/weibo.png" alt=""></a></li>
+        </ul>
+    </section>
+
+    <div class="menu">
+        <ul>
+            <li><a href="https:\\jerrylitt.github.io/web/ll/index1.html">🐎</a></li>
+            <li><a href="https:\\jerrylitt.github.io/web/ll/index1.html">🐎</a></li>
+            <li><a href="https:\\jerrylitt.github.io/web/ll/index1.html">🐎</a></li>
+            <li><a href="https:\\jerrylitt.github.io/web/ll/index1.html">🐎</a></li>
+            <li><a href="https:\\jerrylitt.github.io/web/ll/index1.html">🐎</a></li>
+        </ul>
+    </div>
+
+    <script>
+        const menuToggle = document.querySelector('.toggle');
+        const showcase = document.querySelector('.showcase');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            showcase.classList.toggle('active');
+        })
+    </script>
+</body>
 </html>
