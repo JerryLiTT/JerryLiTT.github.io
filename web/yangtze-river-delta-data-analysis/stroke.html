@@ -4,22 +4,20 @@
 <head>
     <title>脑梗概率计算器</title>
     
-    <script>
-        function calculateP() {
-            var gender = parseFloat(document.getElementById("gender").value);
-            var age = parseFloat(document.getElementById("age").value);
-            var hypertension = parseFloat(document.getElementById("hypertension").value);
-            var heartDisease = parseFloat(document.getElementById("heartDisease").value);
-            var marriage = parseFloat(document.getElementById("marriage").value);
-            var occupation = parseFloat(document.getElementById("occupation").value);
-            var residence = parseFloat(document.getElementById("residence").value);
-            var bloodSugar = parseFloat(document.getElementById("bloodSugar").value);
-            var bmi = parseFloat(document.getElementById("bmi").value);
-            var smoking = parseFloat(document.getElementById("smoking").value);
+     <script>
+        function calculateProbability() {
+            var age = parseFloat(document.getElementById('age').value);
+            var hypertension = parseFloat(document.getElementById('hypertension').checked ? 1 : 0);
+            var heartDisease = parseFloat(document.getElementById('heartDisease').checked ? 1 : 0);
+            var marriage = parseFloat(document.getElementById('marriage').checked ? 1 : 0);
+            var bloodSugar = parseFloat(document.getElementById('bloodSugar').value);
+            var bmi = parseFloat(document.getElementById('bmi').value);
+            var smoking = parseFloat(document.getElementById('smoking').checked ? 1 : 0);
 
-            var p = 1 / (1 + Math.exp(-(-7.6600 + -0.0105*gender + 0.0724*age + 0.4095*hypertension + 0.2442*heartDisease + -0.2364*marriage + -0.1467*occupation + -0.0768*residence + 0.0038*bloodSugar + 0.0076*bmi + 0.1033*smoking)));
+            var y = -7.9699 + 0.0690 * age + 0.3539 * hypertension + 0.2814 * heartDisease - 0.0304 * marriage + 0.0035 * bloodSugar + 0.0156 * bmi + 0.3159 * smoking;
+            var probability = 1 / (1 + Math.exp(-y));
 
-            document.getElementById("result").innerHTML = "脑梗概率为" + (p * 100).toFixed(10) + "%";
+            document.getElementById('result').innerHTML = '脑梗概率值为：' + probability;
         }
     </script>
 </head>
@@ -32,7 +30,7 @@
 
 
 
-    <a href="#" onclick="calculateP()">
+    <a href="#" onclick="calculateProbability()">
         <div class="button button--bird">
             <div class="button__wrapper">
                 <span class="button__text">点击以计算</span>
@@ -378,62 +376,28 @@
 
     <p id="result"></p>
 
-    <p>请输入以下信息：</p>
-    <label for="gender">性别：</label>
-    <select id="gender">
-        <option value="0">男</option>
-        <option value="1">女</option>
-    </select><br>
-
-    <label for="age">年龄：</label>
-    <input type="number" id="age"><br>
-
-    <label for="hypertension">是否有高血压：</label>
-    <select id="hypertension">
-        <option value="0">没有</option>
-        <option value="1">有</option>
-    </select><br>
-
-    <label for="heartDisease">是否有心脏病：</label>
-    <select id="heartDisease">
-        <option value="0">没有</option>
-        <option value="1">有</option>
-    </select><br>
-
-    <label for="marriage">是否有过婚姻：</label>
-    <select id="marriage">
-        <option value="0">没有</option>
-        <option value="1">有</option>
-    </select><br>
-
-    <label for="occupation">工作类型：</label>
-    <select id="occupation">
-        <option value="0">私人企业</option>
-        <option value="1">政府部门</option>
-        <option value="2">自雇人士</option>
-        <option value="3">儿童</option>
-    </select><br>
-
-    <label for="residence">居住地：</label>
-    <select id="residence">
-        <option value="0">城里</option>
-        <option value="1">乡下</option>
-    </select><br>
-
-    <label for="bloodSugar">血糖：</label>
-    <input type="number" id="bloodSugar"><br>
-
-    <label for="bmi">BMI：</label>
-    <input type="number" id="bmi"><br>
-
-    <label for="smoking">吸烟情况：</label>
-    <select id="smoking">
-        <option value="0">从不吸烟</option>
-        <option value="1">不清楚</option>
-        <option value="2">过去吸烟</option>
-        <option value="3">在吸烟</option>
-    </select><br>
-
+    
+    <form>
+        
+        <label for="age">年龄：</label>
+        <input type="number" id="age"><br><br>
+        <label for="hypertension">是否有高血压：</label>
+        <input type="checkbox" id="hypertension"><br><br>
+        <label for="heartDisease">是否有心脏病：</label>
+        <input type="checkbox" id="heartDisease"><br><br>
+        <label for="marriage">是否已婚：</label>
+        <input type="checkbox" id="marriage"><br><br>
+        <label for="bloodSugar">血糖：</label>
+        <input type="number" id="bloodSugar"><br><br>
+        <label for="bmi">BMI：</label>
+        <input type="number" id="bmi"><br><br>
+        <label for="smoking">是否吸过烟：</label>
+        <input type="checkbox" id="smoking"><br><br>
+        
+        <p id="result"></p>
+        
+        
+    </form>
 
 
 
