@@ -14,7 +14,7 @@
             var bmi = parseFloat(document.getElementById('bmi').value);
             var smoking = parseFloat(document.getElementById('smoking').checked ? 1 : 0);
 
-            var y = -7.9699 + 0.0690 * age + 0.3539 * hypertension + 0.2814 * heartDisease - 0.0304 * marriage + 0.0035 * bloodSugar + 0.0156 * bmi + 0.3159 * smoking;
+            var y = -7.8177 + 0.0719 * age + 0.1935 * hypertension + 0.1787 * heartDisease - 0.0226 * marriage + 0.0025 * bloodSugar + 0.0097 * bmi + 0.1061 * smoking;
             var probability = 1 / (1 + Math.exp(-y));
 
             document.getElementById('result').innerHTML = '脑梗概率值为：' + probability;
