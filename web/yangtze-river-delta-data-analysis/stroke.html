@@ -1,6 +1,18 @@
 
 <!DOCTYPE html>
 <html>
+
+
+
+<style>
+    .low-risk { color: green; }
+    .medium-risk { color: orange; }
+    .high-risk { color: red; }
+</style>
+
+
+
+
 <head>
     <title>脑梗概率计算器</title>
     
@@ -17,7 +29,30 @@
             var y = -7.8177 + 0.0719 * age + 0.1935 * hypertension + 0.1787 * heartDisease - 0.0226 * marriage + 0.0025 * bloodSugar + 0.0097 * bmi + 0.1061 * smoking;
             var probability = 1 / (1 + Math.exp(-y));
 
-            document.getElementById('result').innerHTML = '脑梗概率值为：' + probability;
+            // 将概率值转换为百分比形式
+            var percentage = (probability * 100).toFixed(5);
+
+            document.getElementById('result').innerHTML = '脑梗概率值为：' + percentage + '%';
+
+
+
+
+            var resultElement = document.getElementById('result');
+
+            if (probability < 0.014) {
+                resultElement.innerHTML = '无需就医！脑梗概率：' + percentage + '%';
+                resultElement.className = 'low-risk';
+            } else if (0.014 <= probability && probability <= 0.1754) {
+                resultElement.innerHTML = '建议就医！脑梗概率：' + percentage + '%';
+                resultElement.className = 'medium-risk';
+            } else {
+                resultElement.innerHTML = '强烈建议立即就医！脑梗概率：' + percentage + '%';
+                resultElement.className = 'high-risk';
+            }
+
+
+
+
         }
     </script>
 </head>
