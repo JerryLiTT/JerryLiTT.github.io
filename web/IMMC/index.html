@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Can you afford a cat?</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 20px;
+            background-image: url('pic.jpg'); /* 替换 'your-image-url.jpg' 为你的图片路径 */
+            background-size: cover; /* 使背景图片覆盖整个屏幕 */
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        label {
+            margin: 10px 0;
+        }
+
+        input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+        }
+
+        input {
+            margin-bottom: 10px;
+            padding: 5px;
+        }
+
+        button {
+            padding: 10px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #result {
+            font-size: 32px;
+            margin-top: 20px;
+        }
+
+        .yes {
+            color: #4CAF50;
+        }
+
+        .no {
+            color: #FF0000;
+        }
+    </style>
+</head>
+<body>
+
+
+
+
+
+    <font size="7">  
+        Are you suitable to own a cat? 
+    </font> 
+    <font size="4">  
+         
+    </font> 
+    
+    <h2>Finish the quiz below to get an answer</h2>
+    <p>Made for IMMC-A to be used by animal shelters, pet stores, etc.</p>
+    <p>to determine if a household is prepared to own a cat by IMMC24369905</p>
+    <h4>__________________________________________________________________________</h4>
+    
+    <form id="catForm">
+        <h3>Allergy</h3>
+        <label>
+            Any family members allergic to cats?
+            <input type="checkbox" id="allergy" name="allergy">
+        </label>
+        <h3>Elderly</h3>
+        <label>
+            Are there people over 70 in the family?
+            <input type="checkbox" id="elderly" name="elderly">
+        </label>
+        <h3>Hair Slip</h3>
+        <label>
+            Do you accept pet shedding?
+            <input type="checkbox" id="hairSlip" name="hairSlip">
+        </label>
+        <h3>Pet Clinic</h3>
+        <label>
+            Is there a pet hospital within 1.86mile/3km of your home?
+            <input type="checkbox" id="petClinic" name="petClinic">
+        </label>
+        <h3>Costs</h3>
+        <label>
+            How much are you going to spend on a cat monthly?
+            <input type="number" id="costs" name="costs" min="0">
+        </label>
+        <h3>Regulation</h3>
+        <label>
+            Does the landlord allow cats?
+            <input type="checkbox" id="regulation" name="regulation">
+        </label>
+        <h3>Housing</h3>
+        <label>
+            Do you live in a big house with a yard?
+            <input type="checkbox" id="housing" name="housing">
+        </label>
+        <h3>Support</h3>
+        <label>
+            Level of family support(1-5):
+            <input type="number" id="support" name="support" min="1" max="5">
+        </label>
+        <h3>Caregiving</h3>
+        <label>
+            How much you love pets(1-5):
+            <input type="number" id="caregiving" name="caregiving" min="1" max="5">
+        </label>
+        <button type="button" onclick="calculateProbability()">Check Probability</button>
+    </form>
+    <div id="result"></div>
+
+    <script>
+        function calculateProbability() {
+            const x1 = document.getElementById('allergy').checked ? 1 : 0;
+            const x2 = document.getElementById('elderly').checked ? 1 : 0;
+            const x3 = document.getElementById('hairSlip').checked ? 1 : 0;
+            const x4 = document.getElementById('petClinic').checked ? 1 : 0;
+            const x5 = parseInt(document.getElementById('costs').value) || 0;
+            const x6 = document.getElementById('regulation').checked ? 1 : 0;
+            const x7 = document.getElementById('housing').checked ? 1 : 0;
+            const x8 = parseInt(document.getElementById('support').value) || 0;
+            const x9 = parseInt(document.getElementById('caregiving').value) || 0;
+
+            const y = -4.955 - 0.606 * x1 - 0.611 * x2 + 0.423 * x3 + 0.246 * x4 + 0.001 * x5 + 0.901 * x6 + 0.949 * x7 + 0.363 * x8 + 0.507 * x9;
+            const probability = 1 / (1 + Math.exp(-y)) * 100;
+
+            const resultElement = document.getElementById('result');
+
+            resultElement.innerHTML = `<p style="font-size: 32px;">${probability.toFixed(2)}%</p>`;
+
+            if (probability > 49.6) {
+                resultElement.innerHTML += `<p class="yes" style="font-size: 32px;">YES, go ahead to get a cat!</p>`;
+            } else {
+                resultElement.innerHTML += `<p class="no" style="font-size: 32px;">NO, think twice before getting a cat.</p>`;
+            }
+        }
+    </script>
+</body>
+</html>
